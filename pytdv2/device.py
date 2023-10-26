@@ -1,8 +1,43 @@
+from dataclasses import dataclass
+from typing import List, Dict
+
 class Device:
-    def __init__(self, fazpass_id=None, is_active=None, scoring=None, risk_level=None, time_stamp=None,
-                 platform=None, is_rooted=None, is_emulator=None, is_gps_spoof=None, is_app_tempering=None,
-                 is_vpn=None, is_clone_app=None, is_screen_sharing=None, is_debug=None, application=None,
-                 device_id=None, sim_serial=None, sim_operator=None, geolocation=None, client_ip=None):
+    def __init__(self, 
+                 name: str, 
+                 os_version: str, 
+                 series: str, 
+                 cpu: str, 
+                 id: str):
+        self.name = name
+        self.os_version = os_version
+        self.series = series
+        self.cpu = cpu
+        self.id = id
+
+class Meta:
+    def __init__(self,
+                 fazpass_id: str,
+                 is_active: bool,
+                 scoring: float,
+                 risk_level: str,
+                 time_stamp: str,
+                 platform: str,
+                 is_rooted: bool,
+                 is_emulator: bool,
+                 is_gps_spoof: bool,
+                 is_app_tempering: bool,
+                 is_vpn: bool,
+                 is_clone_app: bool,
+                 is_screen_sharing: bool,
+                 is_debug: bool,
+                 application: str,
+                 device_id: Device,
+                 sim_serial: List[str],
+                 sim_operator: List[str],
+                 geolocation: Dict[str, str],
+                 client_ip: str,
+                 is_notifiable: bool,
+                 notifiable_devices: List[Device]):
         self.fazpass_id = fazpass_id
         self.is_active = is_active
         self.scoring = scoring
@@ -23,3 +58,5 @@ class Device:
         self.sim_operator = sim_operator
         self.geolocation = geolocation
         self.client_ip = client_ip
+        self.is_notifiable = is_notifiable
+        self.notifiable_devices = notifiable_devices

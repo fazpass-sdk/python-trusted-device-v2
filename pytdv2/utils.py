@@ -1,9 +1,9 @@
 from base64 import b64decode
 from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP, PKCS1_v1_5
+from Crypto.Cipher import PKCS1_v1_5
 import json
 
-from pytdv2.device import Device
+from pytdv2.device import Meta
 
 
 def get_private_key(base64_private_key):
@@ -26,7 +26,7 @@ class Utils:
             cipher = PKCS1_v1_5.new(private_key)
             decrypted_bytes = cipher.decrypt(encrypted_bytes, None)
             json_string = decrypted_bytes.decode("utf-8")
-            return Device(**json.loads(json_string))
+            return Meta(**json.loads(json_string))
         except Exception as e:
             print(str(e))
-            return Device()
+            return Meta()
