@@ -25,9 +25,7 @@ class Utils:
             private_key = get_private_key(self.private_key)
             cipher = PKCS1_v1_5.new(private_key)
             decrypted_bytes = cipher.decrypt(encrypted_bytes, Meta)
-            print(decrypted_bytes)
             json_str = decrypted_bytes.decode("utf-8")
-
             # Langkah 2: Ubah string JSON menjadi dictionary
             data = json.loads(json_str)
 
@@ -55,7 +53,7 @@ class Utils:
                 geolocation=data["geolocation"],
                 client_ip=data["client_ip"],
                 is_notifiable=data.get("is_notifiable", None),
-                notifiable_devices=None
+                notifiable_devices= data.get("notifiable_devices", None)
             )
             return meta_obj
         except Exception as e:

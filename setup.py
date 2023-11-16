@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pytdv2",
-    version="0.3",
+    version="0.4",
     description="Official python library for trusted device from fazpass company",
     author="fazpass",
     license="MIT",
