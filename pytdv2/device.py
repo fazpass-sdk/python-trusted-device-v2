@@ -13,9 +13,18 @@ class Device:
         self.cpu = cpu
         self.id = id
 
+class Biometric:
+    def __init__(self,
+                level: str,
+                is_changing:bool):
+        self.level = level
+        self.is_changing=is_changing
+        
+
 class Meta:
     def __init__(self,
                  fazpass_id: str,
+                 challenge: str,
                  is_active: bool,
                  scoring: float,
                  risk_level: str,
@@ -25,6 +34,7 @@ class Meta:
                  is_emulator: bool,
                  is_gps_spoof: bool,
                  is_app_tempering: bool,
+                 biometric: Biometric,
                  is_vpn: bool,
                  is_clone_app: bool,
                  is_screen_sharing: bool,
@@ -38,12 +48,14 @@ class Meta:
                  is_notifiable: bool,
                  notifiable_devices: List[Device]):
         self.fazpass_id = fazpass_id
+        self.challenge = challenge
         self.is_active = is_active
         self.scoring = scoring
         self.risk_level = risk_level
         self.time_stamp = time_stamp
         self.platform = platform
         self.is_rooted = is_rooted
+        self.biometric = biometric
         self.is_emulator = is_emulator
         self.is_gps_spoof = is_gps_spoof
         self.is_app_tempering = is_app_tempering
